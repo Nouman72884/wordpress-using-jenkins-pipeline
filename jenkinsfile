@@ -1,0 +1,24 @@
+// This is a pipeline for Jenkins (launched on aws ec2 ubuntu instance) to fetch php code from Github and then transfer it to the
+// Apache2 /var/www/html directory (deployment)onto the another aws ec2 ubuntu instance.
+
+
+
+pipeline {
+    agent any
+
+       stages {
+            stage('SCM checkout') {
+                  steps {
+                        git url: 'https://github.com/Nouman72884/wordpress-using-jenkins-pipeline.git'
+                        }
+             }
+
+             stage('archiving artifacts') {
+                  steps {
+                          archiveArtifacts '**/*.sh'
+                        }
+              }
+
+              stage('transfer artifacts') {
+                    steps {
+                          sshPublisher(publishers: [sshPublisherDesc(configName: 'MyApacheInstance', transfers: [sshTransfer(excludes: '', execCommand: '', execTimeout: 120000, flatten: true, makeEmptyDirs: false, noDefaultExcludes: false, patternSeparator: '[, ]+', remoteDirectory: '/var/', remoteDirectorySDF: false, removePrefix: '', sourceFiles: '**/*.html')], usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: true)])

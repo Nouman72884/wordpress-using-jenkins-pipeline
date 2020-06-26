@@ -11,8 +11,8 @@ sudo apt install php7.3 php7.3-common php7.3-opcache php7.3-cli php7.3-gd php7.3
 sudo systemctl restart apache2
 sudo apt-get update -y
 sudo apt-get upgrade -y
-apt-get install mysql-server -y
-apt-get install -y expect
+sudo apt-get install mysql-server -y
+sudo apt-get install -y expect
 MYSQL_UPDATE=$(expect -c "
 set timeout 5
 spawn mysql -u root
@@ -28,9 +28,9 @@ expect eof
 ")
 sudo systemctl restart mysql
 cd /var/www/html
-curl -O https://wordpress.org/wordpress-5.4.tar.gz
-tar xzvf  wordpress-5.4.tar.gz
-mv wordpress/wp-config-sample.php wordpress/wp-config.php
+sudo curl -O https://wordpress.org/wordpress-5.4.tar.gz
+sudo tar xzvf  wordpress-5.4.tar.gz
+sudo mv wordpress/wp-config-sample.php wordpress/wp-config.php
 sudo chown -R www-data:www-data wordpress
 sudo find wordpress/ -type d -exec chmod 750 {} \;
 sudo sudo sed -i -e 's/database_name_here/Wordpress/g' wordpress/wp-config.php

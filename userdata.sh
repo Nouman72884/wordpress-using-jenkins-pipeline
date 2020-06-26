@@ -25,6 +25,7 @@ sudo sed -i -e 's/username_here/WordpressUser/g' wordpress/wp-config.php
 sudo sed -i -e 's/password_here/password/g' wordpress/wp-config.php
 sudo sed -i -e 's/localhost/localhost/g' wordpress/wp-config.php
 cd /var/www/html
+sudo rm -r  wordpress-5.4.tar.gz
 sudo rm index.html
-sudo mv /wordpress/* .
+sudo mv wordpress/* .
 sudo systemctl restart apache2

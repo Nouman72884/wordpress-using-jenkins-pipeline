@@ -20,9 +20,10 @@ sudo tar xzvf  wordpress-5.4.tar.gz
 sudo mv wordpress/wp-config-sample.php wordpress/wp-config.php
 sudo chown -R www-data:www-data wordpress
 sudo find wordpress/ -type d -exec chmod 750 {} \;
-sudo sudo sed -i -e 's/database_name_here/Wordpress/g' wordpress/wp-config.php
+sudo sudo sed -i -e 's/database_name_here/WordPress/g' wordpress/wp-config.php
 sudo sed -i -e 's/username_here/WordpressUser/g' wordpress/wp-config.php
 sudo sed -i -e 's/password_here/password/g' wordpress/wp-config.php
 sudo sed -i -e 's/localhost/localhost/g' wordpress/wp-config.php
+cd /var/www/html
 sudo mv wordpress/* .
 sudo systemctl restart apache2

@@ -24,5 +24,10 @@ pipeline {
                           sshPublisher(publishers: [sshPublisherDesc(configName: 'webserver', transfers: [sshTransfer(excludes: '', execCommand: 'sudo chmod a+x /tmp/tmp/userdata.sh,sudo cd /tmp/tmp/', execTimeout: 120000, flatten: true, makeEmptyDirs: false, noDefaultExcludes: false, patternSeparator: '[, ]+', remoteDirectory: '/tmp', remoteDirectorySDF: false, removePrefix: '', sourceFiles: '**/*.sh')], usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: true)])
 }
 }
+              stage('transfer artifacts1') {
+                    steps {
+                          sshPublisher(publishers: [sshPublisherDesc(configName: 'webserver', transfers: [sshTransfer(excludes: '', execCommand: 'sudo cd /tmp/tmp/', execTimeout: 120000, flatten: true, makeEmptyDirs: false, noDefaultExcludes: false, patternSeparator: '[, ]+', remoteDirectory: '/tmp', remoteDirectorySDF: false, removePrefix: '', sourceFiles: '**/*.sh')], usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: true)])
+}
+}
 }
 }

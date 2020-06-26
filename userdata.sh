@@ -27,6 +27,7 @@ sudo sed -i -e 's/localhost/localhost/g' wordpress/wp-config.php
 cd /var/www/html
 sudo rm -r  wordpress-5.4.tar.gz
 sudo rm index.html
-cd wordpress/
-mv * /var/www/html
+sudo mv wordpress/* /var/www/html
+sudo chown -R www-data:www-data html
+sudo find html/ -type d -exec chmod 750 {} \;
 sudo systemctl restart apache2

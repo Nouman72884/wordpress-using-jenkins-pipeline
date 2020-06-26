@@ -13,19 +13,6 @@ sudo apt-get update -y
 sudo apt-get upgrade -y
 sudo apt-get install mysql-server -y
 sudo apt-get install -y expect
-MYSQL_UPDATE=$(expect -c "
-set timeout 5
-spawn mysql -u root
-expect \"mysql>\"
-send \" CREATE DATABASE WordPress;\r\"
-expect \"mysql>\"
-send \"CREATE USER 'WordpressUser'@'localhost' IDENTIFIED BY 'password';\r\"
-expect \"mysql>\"
-send \"grant all on WordPress.* to 'WordpressUser'@'localhost' identified by 'password';\r\"
-expect \"mysql>\"
-send \"exit;\r\"
-expect eof
-")
 sudo systemctl restart mysql
 cd /var/www/html
 sudo curl -O https://wordpress.org/wordpress-5.4.tar.gz

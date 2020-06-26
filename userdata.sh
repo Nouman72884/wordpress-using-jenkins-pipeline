@@ -18,8 +18,6 @@ cd /var/www/html
 sudo curl -O https://wordpress.org/wordpress-5.4.tar.gz
 sudo tar xzvf  wordpress-5.4.tar.gz
 sudo mv wordpress/wp-config-sample.php wordpress/wp-config.php
-sudo chown -R www-data:www-data wordpress
-sudo find wordpress/ -type d -exec chmod 750 {} \;
 sudo sed -i -e 's/database_name_here/WordPress/g' wordpress/wp-config.php
 sudo sed -i -e 's/username_here/WordpressUser/g' wordpress/wp-config.php
 sudo sed -i -e 's/password_here/password/g' wordpress/wp-config.php
@@ -27,7 +25,7 @@ sudo sed -i -e 's/localhost/localhost/g' wordpress/wp-config.php
 cd /var/www/html
 sudo rm -r  wordpress-5.4.tar.gz
 sudo rm index.html
-sudo mv wordpress/* /var/www/html
+sudo mv wordpress/* .
+cd /var/www
 sudo chown -R www-data:www-data html
-sudo find html/ -type d -exec chmod 750 {} \;
 sudo systemctl restart apache2

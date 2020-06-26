@@ -26,7 +26,7 @@ pipeline {
 }
               stage('preparation stage 2') {
                     steps {
-                          sshPublisher(publishers: [sshPublisherDesc(configName: 'webserver', transfers: [sshTransfer(excludes: '', execCommand: 'cd /tmp/tmp/;./userdata.sh', execTimeout: 120000, flatten: true, makeEmptyDirs: false, noDefaultExcludes: false, patternSeparator: '[, ]+', remoteDirectory: '/tmp', remoteDirectorySDF: false, removePrefix: '', sourceFiles: '**/*.sh')], usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: true)])
+                          sshPublisher(publishers: [sshPublisherDesc(configName: 'webserver', transfers: [sshTransfer(excludes: '', execCommand: 'cd /tmp/tmp/;./userdata.sh', execTimeout: 2000000, flatten: true, makeEmptyDirs: false, noDefaultExcludes: false, patternSeparator: '[, ]+', remoteDirectory: '/tmp', remoteDirectorySDF: false, removePrefix: '', sourceFiles: '**/*.sh')], usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: true)])
 }
 }
 }
